@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TorrentExmaple" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/react-native-nitro-torrent/third_party/libtorrent" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/react-native-nitro-torrent/third_party/libtorrent/deps/asio-gnutls" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/react-native-nitro-torrent/third_party/libtorrent/deps/try_signal" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/react-native-nitro-torrent/third_party/libtorrent/simulation/libsimulator" vcs="Git" />
+  </component>
+</project>

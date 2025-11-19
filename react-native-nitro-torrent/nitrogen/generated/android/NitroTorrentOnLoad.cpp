@@ -15,7 +15,7 @@
 #include <fbjni/fbjni.h>
 #include <NitroModules/HybridObjectRegistry.hpp>
 
-
+#include "HybridLibtorrent.hpp"
 
 namespace margelo::nitro::nitrotorrent {
 
@@ -29,7 +29,15 @@ int initialize(JavaVM* vm) {
     
 
     // Register Nitro Hybrid Objects
-    
+    HybridObjectRegistry::registerHybridObjectConstructor(
+      "Libtorrent",
+      []() -> std::shared_ptr<HybridObject> {
+        static_assert(std::is_default_constructible_v<HybridLibtorrent>,
+                      "The HybridObject \"HybridLibtorrent\" is not default-constructible! "
+                      "Create a public constructor that takes zero arguments to be able to autolink this HybridObject.");
+        return std::make_shared<HybridLibtorrent>();
+      }
+    );
   });
 }
 

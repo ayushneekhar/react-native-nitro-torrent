@@ -33,7 +33,7 @@ target_sources(
   # Autolinking Setup
   ../nitrogen/generated/android/NitroTorrentOnLoad.cpp
   # Shared Nitrogen C++ sources
-  ../nitrogen/generated/shared/c++/HybridHybridTorrentSpec.cpp
+  ../nitrogen/generated/shared/c++/HybridLibtorrentSpec.cpp
   # Android-specific Nitrogen C++ sources
   
 )

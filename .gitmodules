@@ -1,0 +1,3 @@
+[submodule "react-native-nitro-torrent/third_party/libtorrent"]
+	path = react-native-nitro-torrent/third_party/libtorrent
+	url = https://github.com/arvidn/libtorrent.git
