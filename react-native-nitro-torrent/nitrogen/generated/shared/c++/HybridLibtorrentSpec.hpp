@@ -13,50 +13,59 @@
 #error NitroModules cannot be found! Are you sure you installed NitroModules properly?
 #endif
 
+// Forward declaration of `Torrent` to properly resolve imports.
+namespace margelo::nitro::nitrotorrent {
+struct Torrent;
+}
 
+#include <string>
 
-
+#include "Torrent.hpp"
 
 namespace margelo::nitro::nitrotorrent {
 
-  using namespace margelo::nitro;
+using namespace margelo::nitro;
 
-  /**
-   * An abstract base class for `Libtorrent`
-   * Inherit this class to create instances of `HybridLibtorrentSpec` in C++.
-   * You must explicitly call `HybridObject`'s constructor yourself, because it is virtual.
-   * @example
-   * ```cpp
-   * class HybridLibtorrent: public HybridLibtorrentSpec {
-   * public:
-   *   HybridLibtorrent(...): HybridObject(TAG) { ... }
-   *   // ...
-   * };
-   * ```
-   */
-  class HybridLibtorrentSpec: public virtual HybridObject {
-    public:
-      // Constructor
-      explicit HybridLibtorrentSpec(): HybridObject(TAG) { }
+/**
+ * An abstract base class for `Libtorrent`
+ * Inherit this class to create instances of `HybridLibtorrentSpec` in C++.
+ * You must explicitly call `HybridObject`'s constructor yourself, because it is virtual.
+ * @example
+ * ```cpp
+ * class HybridLibtorrent: public HybridLibtorrentSpec {
+ * public:
+ *   HybridLibtorrent(...): HybridObject(TAG) { ... }
+ *   // ...
+ * };
+ * ```
+ */
+class HybridLibtorrentSpec : public virtual HybridObject {
+   public:
+    // Constructor
+    explicit HybridLibtorrentSpec() : HybridObject(TAG) {}
 
-      // Destructor
-      ~HybridLibtorrentSpec() override = default;
+    // Destructor
+    ~HybridLibtorrentSpec() override = default;
 
-    public:
-      // Properties
-      
+   public:
+    // Properties
 
-    public:
-      // Methods
-      virtual double add(double a, double b) = 0;
+   public:
+    // Methods
+    virtual void addMagnetLink(const std::string& magnetLink) = 0;
+    virtual void pauseTorrent(const std::string& torrentId) = 0;
+    virtual void resumeTorrent(const std::string& torrentId) = 0;
+    virtual void cancelTorrent(const std::string& torrentId) = 0;
+    virtual void deleteTorrent(const std::string& torrentId) = 0;
+    virtual Torrent getTorrent(const std::string& torrentId) = 0;
 
-    protected:
-      // Hybrid Setup
-      void loadHybridMethods() override;
+   protected:
+    // Hybrid Setup
+    void loadHybridMethods() override;
 
-    protected:
-      // Tag for logging
-      static constexpr auto TAG = "Libtorrent";
-  };
+   protected:
+    // Tag for logging
+    static constexpr auto TAG = "Libtorrent";
+};
 
-} // namespace margelo::nitro::nitrotorrent
+}  // namespace margelo::nitro::nitrotorrent

@@ -14,7 +14,12 @@ namespace margelo::nitro::nitrotorrent {
     HybridObject::loadHybridMethods();
     // load custom methods/properties
     registerHybrids(this, [](Prototype& prototype) {
-      prototype.registerHybridMethod("add", &HybridLibtorrentSpec::add);
+      prototype.registerHybridMethod("addMagnetLink", &HybridLibtorrentSpec::addMagnetLink);
+      prototype.registerHybridMethod("pauseTorrent", &HybridLibtorrentSpec::pauseTorrent);
+      prototype.registerHybridMethod("resumeTorrent", &HybridLibtorrentSpec::resumeTorrent);
+      prototype.registerHybridMethod("cancelTorrent", &HybridLibtorrentSpec::cancelTorrent);
+      prototype.registerHybridMethod("deleteTorrent", &HybridLibtorrentSpec::deleteTorrent);
+      prototype.registerHybridMethod("getTorrent", &HybridLibtorrentSpec::getTorrent);
     });
   }
 
